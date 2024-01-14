@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\MCSHiPPERS-Task.props" />
+</Project>
