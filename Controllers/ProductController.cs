@@ -80,14 +80,147 @@ namespace MCSHiPPERS_Task.Controllers
         //    }
         //}
 
+
+        
+
+
+        [HttpPost]
+        [Route("CreateProduct")]
+        public  APIResponse CreateProduct([FromForm] ProductDTO ProductDTO)
+        {
+
+            if (ModelState.IsValid)
+            {
+                string coverImage = SaveCoverPhoto(ProductDTO.CoverPhoto);
+               
+                Product product = new()
+                {
+                   
+                    Price = ProductDTO.Price,
+                    Name = ProductDTO.Name,
+                    Quantity = ProductDTO.Quantity,
+                    CoverPhoto = coverImage,
+                    Description = ProductDTO.Description,
+
+                   
+                   
+                };
+                _product.Add(product);
+
+                return new APIResponse
+                {
+                    Data = product,
+                    Messages = new List<string>()
+                    {
+                       "Add Succfully"
+                    }
+                };
+            }
+            else
+            {
+                return new APIResponse
+                {
+                    Messages = new List<string>()
+                   {
+                       "Not Found Such Prouct"
+                   }
+                };
+            }
+           
+        }
+
+        [HttpPut]
+        [Route("UpdateProduct/{productID}")]
+        public async Task<APIResponse> UpdateProduct(int productID, [FromForm] ProductDTO productDTO)
+        {
+            var Product = await _product.GetOne(productID);
+            string coverImage = SaveCoverPhoto(productDTO.CoverPhoto);
+            if (Product != null)
+            {
+
+                Product.Name = productDTO.Name;
+
+                Product.Description = productDTO.Description;
+                Product.Price = productDTO.Price;
+                Product.Quantity = productDTO.Quantity;
+
+                Product.CoverPhoto = coverImage;
+            }
+
+
+            if (ModelState.IsValid)
+            {
+                _product.Update(Product);
+                return new APIResponse
+                {
+                    Data = Product,
+                    Messages = new List<string>()
+                    {
+                       "Updated Succfully"
+                    }
+                };
+            }
+            else
+            {
+                return new APIResponse
+                {
+
+                    Messages = new List<string>()
+                    {
+                       "Updated Failed"
+                    }
+                };
+            }
+
+        }
+
+        [HttpGet]
+        [Route("GetOneProduct")]
+        public async Task<APIResponse> GetOneProduct(int id)
+        {
+            var product = await _product.GetOne(id);
+
+            if (product != null)
+            {
+                ProductDTODetails productDTO = new()
+                {
+                  
+                    Price = product.Price,
+                    Name = product.Name,
+                    Quantity = product.Quantity,
+                    CoverPhotoString = product.CoverPhoto,
+                    Description = product.Description,
+
+                };
+                productDTO.ID = id;
+                return new APIResponse
+                {
+                    Data = productDTO
+                };
+            }
+            else
+            {
+                return new APIResponse
+                {
+                    Messages = new List<string>()
+                   {
+                       "Not Found Such Prouct"
+                   }
+                };
+            }
+        }
+
+
+
         [HttpGet]
         [Route("getProuctsPagination")]
         public async Task<APIResponse> GetAllProductsPagination(int PageIndex = 1, int PageSize = 10)
 
         {
 
+            List<Product> Allproducts = (List<Product>)await _product.GetAll();
             List<Product> products = (List<Product>)await _product.GetAll(PageIndex, PageSize);
-            var totalCount = products.Count();
+            var totalCount = Allproducts.Count();
             if (totalCount > 0)
             {
                 List<ProductDTODetails> ProductSDTO = new List<ProductDTODetails>();
@@ -157,8 +290,15 @@ namespace MCSHiPPERS_Task.Controllers
                     };
                     ProductSDTO.Add(ProductDTODetails);
                 }
+
+                var response = new
+                {
+                    TotalCount = totalCount,
+
+                    Data = ProductSDTO,
+                };
                 return new APIResponse
-                { Data = ProductSDTO };
+                { Data = response };
             }
             else
             {
@@ -175,83 +315,74 @@ namespace MCSHiPPERS_Task.Controllers
 
 
         [HttpGet]
-        [Route("GetOneProduct")]
-        public async Task<APIResponse> GetOneProduct(int id)
+        [Route("Search")]
+        public async Task<APIResponse> Search(string? name, decimal? price)
         {
-             var product = await _product.GetOne(id);
+            List<Product> products = new List<Product>();
 
-            if (product != null)
+            if (name != null && price == null)
             {
-                //ProductDTO productDTO = new()
-                //{
-                //    Price = product.Price,
-                //    Name = product.Name,
-                //    Quantity = product.Quantity,
-                //    CoverPhoto = product.CoverPhoto,
-                //    Description = product.Description,
-
-                //};
-                return new APIResponse
-                {
-                    Data = product
-                };
+                products = (List<Product>)await _product.Search(m => m.Name == name );
             }
-            else
+            if (name == null && price != null)
+            {
+                products = (List<Product>)await _product.Search(m => m.Price == price);
+            }
+            if (name != null && price != null)
+            {
+                products = (List<Product>)await _product.Search(m => m.Name == name && m.Price == price);
+            }
+            if (name == null && price == null)
             {
                 return new APIResponse
                 {
-                   Messages= new List<string>()
+                    Messages = new List<string>()
                    {
-                       "Not Found Such Prouct"
+                       "Search by at least one value to get data"
                    }
                 };
             }
-        }
 
-
-        [HttpPost]
-        [Route("CreateProduct")]
-        public  APIResponse CreateProduct([FromForm] ProductDTO ProductDTO)
-        {
-
-            if (ModelState.IsValid)
+            if (products.Count >0)
             {
-                string coverImage = SaveCoverPhoto(ProductDTO.CoverPhoto);
-               
-                Product product = new()
+                var result = new List<ProductDTODetails>();
+                result = products.Select(u => new ProductDTODetails
                 {
-                   
-                    Price = ProductDTO.Price,
-                    Name = ProductDTO.Name,
-                    Quantity = ProductDTO.Quantity,
-                    CoverPhoto = coverImage,
-                    Description = ProductDTO.Description,
+                    ID = u.ID,
+                    Name = u.Name,
+                    Price = u.Price,
+                    Description = u.Description,
+                    Quantity = u.Quantity,
+                    CoverPhotoString = u.CoverPhoto.IsNullOrEmpty() ? null : "https://localhost:7118/ProductPhoto/" + u.CoverPhoto,
+                }).ToList();
 
-                   
-                   
+                var response = new
+                {
+                    TotalCount = products.Count,
+
+                    Data = result,
                 };
-                _product.Add(product);
-
                 return new APIResponse
-                {
-                    Data = product,
-                    Messages = new List<string>()
-                    {
-                       "Add Succfully"
-                    }
-                };
+                { Data = response };
+
             }
             else
             {
                 return new APIResponse
                 {
                     Messages = new List<string>()
-                   {
-                       "Not Found Such Prouct"
-                   }
+                       {
+                           "No Data"
+                        }
                 };
             }
-           
+
+
+
+
+
+
+
         }
 
 
@@ -286,99 +417,9 @@ namespace MCSHiPPERS_Task.Controllers
         }
 
 
-        [HttpPut]
-        [Route("UpdateProduct")]
-        public async Task<APIResponse> UpdateProduct([FromForm] ProductDTOUppdate productDTO)
-        {
-            var Product = await _product.GetOne(productDTO.ID);
-            string coverImage = SaveCoverPhoto(productDTO.CoverPhoto);
-            if (Product != null)
-            {
-                
-                Product.Name = productDTO.Name;
+        
 
-                Product.Description = productDTO.Description;
-                Product.Price = productDTO.Price;
-                Product.CoverPhoto = coverImage;
-            }
-
-
-            if (ModelState.IsValid)
-            {
-               _product.Update(Product);
-                return new APIResponse
-                {
-                    Data = Product,
-                    Messages = new List<string>()
-                    {
-                       "Updated Succfully"
-                    }
-                };
-            }
-            else
-            {
-                return new APIResponse
-                {
-                   
-                    Messages = new List<string>()
-                    {
-                       "Updated Failed"
-                    }
-                };
-            }
-
-        }
-
-        [HttpGet]
-        [Route("Search")]
-        public async Task<APIResponse> Search(string? name , decimal? price)
-        {
-            if (name != null || price != null)
-            {
-                var list = await _product.Search(m => m.Name == name || m.Price == price);
-                var result = new List<ProductDTODetails>();
-                result = list.Select(u => new ProductDTODetails
-                {
-                    ID = u.ID,
-                    Name = u.Name,
-                    Price = u.Price,
-                    Description = u.Description,
-                    Quantity = u.Quantity,
-                    CoverPhotoString = u.CoverPhoto.IsNullOrEmpty() ? null : "https://localhost:7118/ProductPhoto/" + u.CoverPhoto,
-                }).ToList();
-                if (result.Count > 0)
-                {
-
-                    return new APIResponse
-                    {
-                        Data = result,
-
-                    };
-
-                }
-                else
-                {
-                    return new APIResponse
-                    {
-                        Messages = new List<string>()
-                       {
-                           "No Data"
-                        }
-                    };
-                }
-            }
-            else
-            {
-                return new APIResponse
-                {
-                    Messages = new List<string>()
-                   {
-                       "Search by at least one value to get data"
-                   }
-                };
-            }
-
-        }
+       
 
 
         [NonAction]

@@ -1,20 +1,104 @@
 {
   "Files": [
     {
+      "Id": "D:\\ITI-DotNet\\MCSHiPPERS-Task\\wwwroot\\ProductPhoto\\01e11830-2cd1-4236-a6a4-8c280845f742images (3).jpg",
+      "PackagePath": "staticwebassets\\ProductPhoto\\01e11830-2cd1-4236-a6a4-8c280845f742images (3).jpg"
+    },
+    {
+      "Id": "D:\\ITI-DotNet\\MCSHiPPERS-Task\\wwwroot\\ProductPhoto\\03264fc8-3299-4eb3-8cde-bc943e9993edimages (1).jpeg",
+      "PackagePath": "staticwebassets\\ProductPhoto\\03264fc8-3299-4eb3-8cde-bc943e9993edimages (1).jpeg"
+    },
+    {
       "Id": "D:\\ITI-DotNet\\MCSHiPPERS-Task\\wwwroot\\ProductPhoto\\0ae41687-caea-4c56-b16f-159c145ee8241_1O6NKEJDtV7BS9B_mbzISg.webp",
       "PackagePath": "staticwebassets\\ProductPhoto\\0ae41687-caea-4c56-b16f-159c145ee8241_1O6NKEJDtV7BS9B_mbzISg.webp"
+    },
+    {
+      "Id": "D:\\ITI-DotNet\\MCSHiPPERS-Task\\wwwroot\\ProductPhoto\\1a974df4-1082-42d0-986a-e3b67e7a573fimages (1).jpeg",
+      "PackagePath": "staticwebassets\\ProductPhoto\\1a974df4-1082-42d0-986a-e3b67e7a573fimages (1).jpeg"
+    },
+    {
+      "Id": "D:\\ITI-DotNet\\MCSHiPPERS-Task\\wwwroot\\ProductPhoto\\1b955694-6c06-43b8-9c45-d7c06ec9e81dmaldives-1993704__480.jpg",
+      "PackagePath": "staticwebassets\\ProductPhoto\\1b955694-6c06-43b8-9c45-d7c06ec9e81dmaldives-1993704__480.jpg"
+    },
+    {
+      "Id": "D:\\ITI-DotNet\\MCSHiPPERS-Task\\wwwroot\\ProductPhoto\\34ef0b10-1185-4d9b-9869-c88fd50b0b53maldives-1993704__480.jpg",
+      "PackagePath": "staticwebassets\\ProductPhoto\\34ef0b10-1185-4d9b-9869-c88fd50b0b53maldives-1993704__480.jpg"
+    },
+    {
+      "Id": "D:\\ITI-DotNet\\MCSHiPPERS-Task\\wwwroot\\ProductPhoto\\3d8a87df-147d-4058-9885-b1ee8faa5d13images (1).jpeg",
+      "PackagePath": "staticwebassets\\ProductPhoto\\3d8a87df-147d-4058-9885-b1ee8faa5d13images (1).jpeg"
+    },
+    {
+      "Id": "D:\\ITI-DotNet\\MCSHiPPERS-Task\\wwwroot\\ProductPhoto\\743c9485-d116-41ba-a101-86a0e4931e9fVacation.jpg",
+      "PackagePath": "staticwebassets\\ProductPhoto\\743c9485-d116-41ba-a101-86a0e4931e9fVacation.jpg"
+    },
+    {
+      "Id": "D:\\ITI-DotNet\\MCSHiPPERS-Task\\wwwroot\\ProductPhoto\\747ed418-f0fb-4b34-b009-9960bf2543e1Vacation.jpg",
+      "PackagePath": "staticwebassets\\ProductPhoto\\747ed418-f0fb-4b34-b009-9960bf2543e1Vacation.jpg"
+    },
+    {
+      "Id": "D:\\ITI-DotNet\\MCSHiPPERS-Task\\wwwroot\\ProductPhoto\\7773d6a9-754d-4ceb-8759-74cd6c253736images (1).jpeg",
+      "PackagePath": "staticwebassets\\ProductPhoto\\7773d6a9-754d-4ceb-8759-74cd6c253736images (1).jpeg"
+    },
+    {
+      "Id": "D:\\ITI-DotNet\\MCSHiPPERS-Task\\wwwroot\\ProductPhoto\\7cf07861-08af-4294-9658-bf0cc56833a9Vacation.jpg",
+      "PackagePath": "staticwebassets\\ProductPhoto\\7cf07861-08af-4294-9658-bf0cc56833a9Vacation.jpg"
     },
     {
       "Id": "D:\\ITI-DotNet\\MCSHiPPERS-Task\\wwwroot\\ProductPhoto\\9a0f5a0e-8e58-4f94-a6cb-a66f95c159991_1O6NKEJDtV7BS9B_mbzISg.webp",
       "PackagePath": "staticwebassets\\ProductPhoto\\9a0f5a0e-8e58-4f94-a6cb-a66f95c159991_1O6NKEJDtV7BS9B_mbzISg.webp"
     },
     {
+      "Id": "D:\\ITI-DotNet\\MCSHiPPERS-Task\\wwwroot\\ProductPhoto\\a11ad26f-b87b-4d5c-b5a9-b3f72494735aimages.jpeg",
+      "PackagePath": "staticwebassets\\ProductPhoto\\a11ad26f-b87b-4d5c-b5a9-b3f72494735aimages.jpeg"
+    },
+    {
+      "Id": "D:\\ITI-DotNet\\MCSHiPPERS-Task\\wwwroot\\ProductPhoto\\a299274b-a628-4b48-b559-0aafe78b0184images (3).jpg",
+      "PackagePath": "staticwebassets\\ProductPhoto\\a299274b-a628-4b48-b559-0aafe78b0184images (3).jpg"
+    },
+    {
       "Id": "D:\\ITI-DotNet\\MCSHiPPERS-Task\\wwwroot\\ProductPhoto\\a787a6c3-96db-492a-8d87-cc1bb4d666f91_1O6NKEJDtV7BS9B_mbzISg.webp",
       "PackagePath": "staticwebassets\\ProductPhoto\\a787a6c3-96db-492a-8d87-cc1bb4d666f91_1O6NKEJDtV7BS9B_mbzISg.webp"
     },
     {
+      "Id": "D:\\ITI-DotNet\\MCSHiPPERS-Task\\wwwroot\\ProductPhoto\\b80ea5c4-d102-4166-aed7-130b2a9d587cimages.jpeg",
+      "PackagePath": "staticwebassets\\ProductPhoto\\b80ea5c4-d102-4166-aed7-130b2a9d587cimages.jpeg"
+    },
+    {
+      "Id": "D:\\ITI-DotNet\\MCSHiPPERS-Task\\wwwroot\\ProductPhoto\\bed84063-0407-42d1-96c3-0ef431e676edVacation.jpg",
+      "PackagePath": "staticwebassets\\ProductPhoto\\bed84063-0407-42d1-96c3-0ef431e676edVacation.jpg"
+    },
+    {
+      "Id": "D:\\ITI-DotNet\\MCSHiPPERS-Task\\wwwroot\\ProductPhoto\\c34d5c84-a56f-4d30-b2ac-9a8f287c8f67images.jpeg",
+      "PackagePath": "staticwebassets\\ProductPhoto\\c34d5c84-a56f-4d30-b2ac-9a8f287c8f67images.jpeg"
+    },
+    {
+      "Id": "D:\\ITI-DotNet\\MCSHiPPERS-Task\\wwwroot\\ProductPhoto\\c91b2fa9-1370-48c1-8acd-11eec1133792maldives-1993704__480.jpg",
+      "PackagePath": "staticwebassets\\ProductPhoto\\c91b2fa9-1370-48c1-8acd-11eec1133792maldives-1993704__480.jpg"
+    },
+    {
       "Id": "D:\\ITI-DotNet\\MCSHiPPERS-Task\\wwwroot\\ProductPhoto\\cc825be7-bba9-464e-b597-0a2fd9738094CarClass.PNG",
       "PackagePath": "staticwebassets\\ProductPhoto\\cc825be7-bba9-464e-b597-0a2fd9738094CarClass.PNG"
+    },
+    {
+      "Id": "D:\\ITI-DotNet\\MCSHiPPERS-Task\\wwwroot\\ProductPhoto\\e169d559-6c49-4895-8b9a-d243a82fcccbVacation.jpg",
+      "PackagePath": "staticwebassets\\ProductPhoto\\e169d559-6c49-4895-8b9a-d243a82fcccbVacation.jpg"
+    },
+    {
+      "Id": "D:\\ITI-DotNet\\MCSHiPPERS-Task\\wwwroot\\ProductPhoto\\e3c50c39-1226-41a1-99b4-d81c1087d1dbmaldives-1993704__480 - Copy.jpg",
+      "PackagePath": "staticwebassets\\ProductPhoto\\e3c50c39-1226-41a1-99b4-d81c1087d1dbmaldives-1993704__480 - Copy.jpg"
+    },
+    {
+      "Id": "D:\\ITI-DotNet\\MCSHiPPERS-Task\\wwwroot\\ProductPhoto\\e8ee6c95-b9b6-4514-a039-84d16da45571maldives-1993704__480.jpg",
+      "PackagePath": "staticwebassets\\ProductPhoto\\e8ee6c95-b9b6-4514-a039-84d16da45571maldives-1993704__480.jpg"
+    },
+    {
+      "Id": "D:\\ITI-DotNet\\MCSHiPPERS-Task\\wwwroot\\ProductPhoto\\e9c6ae99-27d2-4a84-90bb-b310c17ff6f4Vacation.jpg",
+      "PackagePath": "staticwebassets\\ProductPhoto\\e9c6ae99-27d2-4a84-90bb-b310c17ff6f4Vacation.jpg"
+    },
+    {
+      "Id": "D:\\ITI-DotNet\\MCSHiPPERS-Task\\wwwroot\\ProductPhoto\\f390c41a-0d95-4deb-abe9-3f2e4a24c8e3maldives-1993704__480 - Copy.jpg",
+      "PackagePath": "staticwebassets\\ProductPhoto\\f390c41a-0d95-4deb-abe9-3f2e4a24c8e3maldives-1993704__480 - Copy.jpg"
     },
     {
       "Id": "D:\\ITI-DotNet\\MCSHiPPERS-Task\\wwwroot\\ProductPhoto\\faa08b62-7c0c-4fb3-b191-9e18fb31e31c1_1O6NKEJDtV7BS9B_mbzISg.webp",
