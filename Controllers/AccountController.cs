@@ -182,7 +182,7 @@ namespace MCSHiPPERS_Task.Controllers
 
             token = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(token));
 
-            var link = Url.Action("ResetPassword", "Account", new { token, email = userData.Email }, Request.Scheme);
+            var link = Url.Action(nameof(ResetPassword), "Account", new { token, email = userData.Email }, Request.Scheme);
 
 
 
@@ -195,7 +195,7 @@ namespace MCSHiPPERS_Task.Controllers
                 return new APIResponse()
                 {
                     StatusCode = 200,
-                    Data=token,
+                   
                     Messages = new List<string> { "Password reset email sent" }
                 };
               }
@@ -204,22 +204,29 @@ namespace MCSHiPPERS_Task.Controllers
                 return new APIResponse()
                 {
                     StatusCode = 500,
-                    Data = token,
+                    
                     Messages = new List<string> { "Error sending email" }
                 };
              }
 
 
 
-    //var resetLink = $"https://localhost:7118/reset?token={token}";
-
-    //_emailService.SendEmail(userData.Email, "Password Reset", $"To reset your password, click the following link: {resetLink}");
-
-    //return Ok("Password reset link has been sent to your email.");
-
-
+  
 
 }
+
+        [HttpGet("ResetPassword")]
+        public async Task<APIResponse> ResetPassword(string token , string email)
+        {
+            var user = new newpasswordDTO { Token = token, email = email };
+
+            return new APIResponse()
+            {
+                StatusCode = 200,
+                Data = user,
+            };
+          
+        }
 
         [HttpPost]
         [Route("ResetPassword")]
@@ -228,16 +235,17 @@ namespace MCSHiPPERS_Task.Controllers
             var user = await _userManger.FindByEmailAsync(dto.email);
             if (user != null)
             {
-                //token = Encoding.UTF8.GetString(WebEncoders.Base64UrlDecode(token));
+              
                 dto.Token = Encoding.UTF8.GetString(WebEncoders.Base64UrlDecode(dto.Token));
-                var result = await _userManger.ResetPasswordAsync(user, dto.Token,dto.password);
+                var result = await _userManger.ResetPasswordAsync(user, dto.Token, dto.password);
                 if (result.Succeeded)
                 {
-                    await _signInManager.RefreshSignInAsync(user);
+                    //await _signInManager.RefreshSignInAsync(user);
                     return new APIResponse()
                     {
-                        StatusCode = 200,
-                        Data = result,
+                       
+                        Data = user,
+                        Messages ={ " User Updated Succfully"}
                     };
                 }
                 else
@@ -252,7 +260,7 @@ namespace MCSHiPPERS_Task.Controllers
             }
             return new APIResponse()
             {
-                StatusCode = 500,
+                StatusCode = 400,
                 Messages = new List<string> { "User cannot be found" }
             };
         }
@@ -275,7 +283,7 @@ namespace MCSHiPPERS_Task.Controllers
             {
                 return new APIResponse()
                 {
-                    StatusCode = 500,
+                    StatusCode = 400,
                     Messages = { "No Users" }
                 };
             }
@@ -301,10 +309,12 @@ namespace MCSHiPPERS_Task.Controllers
             {
                 return new APIResponse()
                 {
-                    StatusCode = 500,
+                    StatusCode = 400,
                     Messages = { "No Users" }
                 };
             }
         }
+
+          
     }
 }

@@ -26,8 +26,8 @@ namespace MCSHiPPERS_Task.Repository.Repository
                 EnableSsl = true
             };
 
-            var from = new MailAddress(_username, "MC");
-            var subject = "Password Reset";
+            var from = new MailAddress(_username, "MCs");
+            var subject = "Password Reset Request";
             var to = new MailAddress(userEmail);
 
            

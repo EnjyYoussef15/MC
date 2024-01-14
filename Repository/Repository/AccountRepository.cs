@@ -27,10 +27,10 @@ namespace MCSHiPPERS_Task.Repository.Repository
             return await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
         }
 
-      
-     
 
-       
-       
+      
+
+
+    
     }
 }
